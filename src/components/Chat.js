@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
+
 
 const Chat = () => {
     return <ChatContainer>
-        <h1>Hello</h1>
         <Header>
             <HeaderLeft>
-
+                <h4><strong>#Room-name</strong></h4>
+                <StarBorderOutlinedIcon />
             </HeaderLeft>
             <HeaderRight>
-                
+                <p>
+                    <InfoOutlinedIcon /> Details
+                </p>
             </HeaderRight>
 
         </Header>
@@ -19,11 +24,27 @@ const Chat = () => {
 export default Chat;
 
 const Header = styled.div`
-
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
 `;
 
 const HeaderLeft = styled.div`
 
+display: flex;
+align-items: center;
+
+    > h4{
+        display: flex;
+        text-transform: lowercase;
+        margin-right: 10px;
+    }
+
+    > h4 > .MuiSvgIcon-root {
+        margin-left: 10px;
+        font-size: 18px;
+    }
 `;
 
 const HeaderRight = styled.div`
