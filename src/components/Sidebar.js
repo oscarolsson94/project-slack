@@ -13,9 +13,14 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { db } from '../firebase';
 
 
 const Sidebar = () => {
+
+    const [channels, loading, error] = useCollection(db.collection('rooms')); //firebase hook useCollection assigns 'rooms' to channel var
+
     return (
         <SidebarContainer>
             <SidebarHeader>
@@ -41,6 +46,15 @@ const Sidebar = () => {
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
             <hr />
             <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+
+            {channels?.docs.map((doc) => {
+                return <SidebarOption
+                    key={doc.id}
+                    id={doc.id}
+                    addChannelOption
+                    title={doc.data().name}
+                />
+            })}
 
         </SidebarContainer>
     )
