@@ -34,7 +34,8 @@ const Chat = () => {
     }, [roomId, loading]);
 
     return <ChatContainer>
-        <>
+        {roomDetails && roomMessage && (
+            <>
             <Header>
                 <HeaderLeft>
                     <h4><strong>#{roomDetails?.data().name}</strong></h4>
@@ -71,6 +72,8 @@ const Chat = () => {
                 channelId={roomId}
             />    
         </>
+        )}
+        
     </ChatContainer>;
 };
 
