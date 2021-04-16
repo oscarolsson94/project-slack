@@ -13,9 +13,9 @@ const Login = () => {
             <LoginInnerContainer>
                 <img src="https://i.pinimg.com/originals/6e/cc/27/6ecc279ff5f0b0863d1bfda0991de926.gif" alt="" />
                 <h1>Sign in to Doge Chat</h1>
-                <p></p>
+                <p>olssondev.com</p>
 
-                <Button typ="submit" onClick={signIn} >
+                <Button onClick={signIn} >
                     Sign in with Google
                 </Button>
 
@@ -46,5 +46,12 @@ const LoginInnerContainer = styled.div`
         object-fit:contain;
         height: 100px;
         margin-bottom: 40px;
+    }
+
+    > button {
+        margin-top: 50px;
+        text-transform: inherit !important;
+        background-color: #0a8d48 !important;
+        color: white;
     }
 `;
