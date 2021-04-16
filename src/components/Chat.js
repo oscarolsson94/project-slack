@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
@@ -12,11 +12,13 @@ import Message from './Message';
 
 const Chat = () => {
 
+    const chatRef = useRef(null);
+
     const roomId = useSelector(selectRoomId);
     const [roomDetails] = useDocument(
         roomId && db.collection("rooms").doc(roomId) //grab room details
     );
-    const [roomMessage] = useCollection(
+    const [roomMessage, loading] = useCollection(
         roomId &&   //grab room messages
         db
             .collection("rooms")
@@ -24,6 +26,10 @@ const Chat = () => {
             .collection("messages")
             .orderBy("timestamp", "asc")
     );
+
+    useEffect(() => {
+        chatRef?.current?.scrollIntoView(); //scrolls down on room entering
+    }, [roomId, loading]);
 
     return <ChatContainer>
         <>
@@ -54,6 +60,7 @@ const Chat = () => {
                         />
                     )
                 })}
+                <ChatBottom ref={ chatRef }/>
             </ChatMessages>
 
             <ChatInput
@@ -65,6 +72,10 @@ const Chat = () => {
 };
 
 export default Chat;
+
+const ChatBottom = styled.div`
+    padding-bottom: 200px;
+`;
 
 const Header = styled.div`
     display: flex;
