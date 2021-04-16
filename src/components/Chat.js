@@ -28,7 +28,9 @@ const Chat = () => {
     );
 
     useEffect(() => {
-        chatRef?.current?.scrollIntoView(); //scrolls down on room entering
+        chatRef?.current?.scrollIntoView({
+            behavior: "smooth",
+        }); //scrolls down on room entering
     }, [roomId, loading]);
 
     return <ChatContainer>
@@ -64,6 +66,7 @@ const Chat = () => {
             </ChatMessages>
 
             <ChatInput
+                chatRef={chatRef}
                 channelName={roomDetails?.data().name}
                 channelId={roomId}
             />    
