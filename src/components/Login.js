@@ -1,11 +1,24 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 
 const Login = () => {
+
+    const signIn = (e) => {
+        e.preventDefault();
+    };
+
     return (
         <LoginContainer>
             <LoginInnerContainer>
-                <img src="https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg" alt=""/>
+                <img src="https://i.pinimg.com/originals/6e/cc/27/6ecc279ff5f0b0863d1bfda0991de926.gif" alt="" />
+                <h1>Sign in to Doge Chat</h1>
+                <p></p>
+
+                <Button typ="submit" onClick={signIn} >
+                    Sign in with Google
+                </Button>
+
             </LoginInnerContainer>
         </LoginContainer>
     );
@@ -26,7 +39,8 @@ const LoginInnerContainer = styled.div`
     text-align: center;
     background-color: white;
     border-radius: 10px;
-    
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
 
     > img {
         object-fit:contain;
