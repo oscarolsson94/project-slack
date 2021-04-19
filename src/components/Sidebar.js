@@ -20,7 +20,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Sidebar = () => {
 
-    const [channels, loading, error] = useCollection(db.collection('rooms')); //firebase hook useCollection assigns 'rooms' to channel var
+    const [channels] = useCollection(db.collection('rooms')); //firebase hook useCollection assigns 'rooms' to channel var
     const [user] = useAuthState(auth);
 
     return (
